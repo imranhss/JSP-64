@@ -14,6 +14,9 @@
 %>
 
 <div class="container">
+    
+
+    
    <h1 class="text-primary text-center">All Student</h1> 
    
    <table class="table table-striped">

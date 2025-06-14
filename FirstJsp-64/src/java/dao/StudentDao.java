@@ -30,13 +30,15 @@ public class StudentDao {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
-                        rs.getString("contactNo")
+                        rs.getString("contactNo"),
+                        rs.getString("subject"),
+                        rs.getString("gender")
                 );
-                
+
                 students.add(s);
 
             }
-            
+
             rs.close();
             ps.close();
             DbUtil.getCon().close();
@@ -46,6 +48,32 @@ public class StudentDao {
         }
 
         return students;
+    }
+
+    public static int saveStudent(Student s) {
+        int status = 0;
+        sql = "insert into student(name, email, contactNo, subject, gender) values(?,?,?,?,?)";
+
+        try {
+            ps = DbUtil.getCon().prepareStatement(sql);
+            ps.setString(1, s.getName());
+            ps.setString(2, s.getEmail());
+            ps.setString(3, s.getContactNo());
+            ps.setString(4, s.getSubject());
+            ps.setString(5, s.getGender());
+
+            status = ps.executeUpdate();
+
+            System.out.println(status);
+
+            ps.close();
+            DbUtil.getCon().close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return status;
     }
 
 }
