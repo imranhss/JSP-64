@@ -10,6 +10,7 @@
     request.setAttribute("list", list);
 %>
 
+
 <div class="container my-5">
     <h1 class="text-primary text-center mb-4">All Students</h1>
 
@@ -31,8 +32,8 @@
                     <td>${s.email}</td>
                     <td>${s.contactNo}</td>
                     <td>
-                        <a href="editstudentform.jsp?id=${s.id}" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="deletestudent.jsp?id=${s.id}" class="btn btn-sm btn-danger"
+                        <a href="studentservlet?action=edit&id=${s.id}" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="studentservlet?action=delete&id=${s.id}" class="btn btn-sm btn-danger"
                            onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
                     </td>
                 </tr>

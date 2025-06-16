@@ -5,7 +5,6 @@
 <%
     String id=request.getParameter("id");    
     Student s=StudentDao.getById(Integer.parseInt(id));
-
 %>
 
 
